@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
 const Payment = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
           <View style={styles.details}>
@@ -20,11 +22,13 @@ const Payment = () => {
             </View>
           </View>
           <View style={styles.footer}>
-          <Text style={{fontSize: 20, fontWeight: "bold", color: "grey"}}>Previous</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("AddToCart")} >
+              <Text style={{fontSize: 20, fontWeight: "bold", color: "grey"}}>Previous</Text>
+            </TouchableOpacity>
             <View style={{flexDirection: "row"}}>
-              <Entypo name="dot-single" size={30} color="black" />
-              <Entypo name="dot-single" size={30} color="black" />
-              <Entypo name="dot-single" size={30} color="blue" />  
+              <View style={{height: 10, width: 12, borderWidth: 1, borderRadius: 5, marginRight: 5, backgroundColor: "black"}}></View>
+              <View style={{height: 10, width: 12, borderWidth: 1, borderRadius: 5, marginRight: 5, backgroundColor: "black"}}></View> 
+              <View style={{height: 10, width: 20, borderWidth: 1, borderRadius: 10, backgroundColor: "slateblue"}}></View>
             </View>
             <Text style={{fontSize: 20, fontWeight: "bold", color: "grey"}}></Text>
           </View>

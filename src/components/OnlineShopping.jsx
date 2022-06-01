@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
+
 
 const OnlineShopping = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
           <View style={styles.details}>
@@ -14,7 +17,7 @@ const OnlineShopping = () => {
               <Image source={require("../../assets/shopping.png")} style={{width: 340, height:250}} />
             </View>
             <View style={styles.btnStyle}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("AddToCart")}>
                 <Text style={{color: "white", fontSize: 25, fontWeight: "bold"}}>Next</Text>
               </TouchableOpacity>
             </View>
@@ -22,11 +25,13 @@ const OnlineShopping = () => {
           <View style={styles.footer}>
             <Text></Text>
             <View style={{flexDirection: "row"}}>
-              <Entypo name="dot-single" size={30} color="blue" />
-              <Entypo name="dot-single" size={30} color="black" />
-              <Entypo name="dot-single" size={30} color="black" />  
+              <View style={{height: 10, width: 20, borderWidth: 1, borderRadius: 10, marginRight: 5, backgroundColor: "slateblue"}}></View> 
+              <View style={{height: 10, width: 12, borderWidth: 1, borderRadius: 5, marginRight: 5, backgroundColor: "black"}}></View>
+              <View style={{height: 10, width: 12, borderWidth: 1, borderRadius: 5, backgroundColor: "black"}}></View>
             </View>
-            <Text style={{fontSize: 20, fontWeight: "bold", color: "grey"}}>Skip</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Payment")}>
+              <Text style={{fontSize: 20, fontWeight: "bold", color: "grey"}}>Skip</Text>
+            </TouchableOpacity>
           </View>
         </View>
   )
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    flex: 6,
+    flex: 5,
     marginTop: 20
   },
 
